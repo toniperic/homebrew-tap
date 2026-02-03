@@ -1,3 +1,5 @@
+require_relative "../lib/private_download_strategy"
+
 class PrBro < Formula
   desc "Prioritize your GitHub PR review queue"
   homepage "https://github.com/toniperic/pr-bro"
@@ -5,31 +7,15 @@ class PrBro < Formula
   license "MIT"
 
   on_intel do
-    url do
-      tag = "v0.2.0"
-      asset_name = "pr-bro-#{tag}-x86_64-apple-darwin.tar.gz"
-      release = GitHub.get_release("toniperic", "pr-bro", tag)
-      asset = release.fetch("assets").find { |a| a["name"] == asset_name }.fetch("url")
-      [asset, header: [
-        "Accept: application/octet-stream",
-        "Authorization: bearer #{GitHub::API.credentials}",
-      ]]
-    end
-    sha256 "4bfdc5d8120fa71667c60e20c1814178e97cff0d1070499948e4894b532e89fd"
+    url "https://github.com/toniperic/pr-bro/releases/download/v0.2.0/pr-bro-v0.2.0-x86_64-apple-darwin.tar.gz",
+        using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "04a3f0822c883218f2cd0d5bac0a1c9cab685d4f9e39c80d8e5000eed68fef8b"
   end
 
   on_arm do
-    url do
-      tag = "v0.2.0"
-      asset_name = "pr-bro-#{tag}-aarch64-apple-darwin.tar.gz"
-      release = GitHub.get_release("toniperic", "pr-bro", tag)
-      asset = release.fetch("assets").find { |a| a["name"] == asset_name }.fetch("url")
-      [asset, header: [
-        "Accept: application/octet-stream",
-        "Authorization: bearer #{GitHub::API.credentials}",
-      ]]
-    end
-    sha256 "9f9982e005ff55509fbadf0287b1a96adc94086f7be9bb599ef38857210b74f5"
+    url "https://github.com/toniperic/pr-bro/releases/download/v0.2.0/pr-bro-v0.2.0-aarch64-apple-darwin.tar.gz",
+        using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "31810cf748ab0b9300645dade47c96e4bef5908748bfe9485ab0268c17cd4942"
   end
 
   def install
