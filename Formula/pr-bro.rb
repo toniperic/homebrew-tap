@@ -5,13 +5,31 @@ class PrBro < Formula
   license "MIT"
 
   on_intel do
-    url "https://github.com/toniperic/pr-bro/releases/download/v0.2.0/pr-bro-v0.2.0-x86_64-apple-darwin.tar.gz"
-    sha256 "e0d1e3b6f7c0f7d5a8946162e69c4aece25a3b7784511abdc768f7c3151401e6"
+    url do
+      tag = "v0.2.0"
+      asset_name = "pr-bro-#{tag}-x86_64-apple-darwin.tar.gz"
+      release = GitHub.get_release("toniperic", "pr-bro", tag)
+      asset = release.fetch("assets").find { |a| a["name"] == asset_name }.fetch("url")
+      [asset, header: [
+        "Accept: application/octet-stream",
+        "Authorization: bearer #{GitHub::API.credentials}",
+      ]]
+    end
+    sha256 "4bfdc5d8120fa71667c60e20c1814178e97cff0d1070499948e4894b532e89fd"
   end
 
   on_arm do
-    url "https://github.com/toniperic/pr-bro/releases/download/v0.2.0/pr-bro-v0.2.0-aarch64-apple-darwin.tar.gz"
-    sha256 "f655d5cb957d704cce876a512965f438bfbd07686bd7c870d275fcec9a233859"
+    url do
+      tag = "v0.2.0"
+      asset_name = "pr-bro-#{tag}-aarch64-apple-darwin.tar.gz"
+      release = GitHub.get_release("toniperic", "pr-bro", tag)
+      asset = release.fetch("assets").find { |a| a["name"] == asset_name }.fetch("url")
+      [asset, header: [
+        "Accept: application/octet-stream",
+        "Authorization: bearer #{GitHub::API.credentials}",
+      ]]
+    end
+    sha256 "9f9982e005ff55509fbadf0287b1a96adc94086f7be9bb599ef38857210b74f5"
   end
 
   def install
