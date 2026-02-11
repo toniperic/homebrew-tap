@@ -1,17 +1,17 @@
 class PrBro < Formula
   desc "Prioritize your GitHub PR review queue"
   homepage "https://github.com/toniperic/pr-bro"
-  version "0.3.4"
+  version "0.4.0"
   license "MIT"
 
   on_intel do
-    url "https://github.com/toniperic/pr-bro/releases/download/v0.3.4/pr-bro-v0.3.4-x86_64-apple-darwin.tar.gz"
-    sha256 "2097d241a8b437984a61f5904e470b7db28351db595181f638c97d9e329b85ea"
+    url "https://github.com/toniperic/pr-bro/releases/download/v0.4.0/pr-bro-v0.4.0-x86_64-apple-darwin.tar.gz"
+    sha256 "13ce623857be6dbf55f23e24a7791c9ca45a4b159fca65d943c0b9c1a0952627"
   end
 
   on_arm do
-    url "https://github.com/toniperic/pr-bro/releases/download/v0.3.4/pr-bro-v0.3.4-aarch64-apple-darwin.tar.gz"
-    sha256 "dbbd4c6b642acdd61dce79460b63fbbbe47a024669b035c74e91305d5d042552"
+    url "https://github.com/toniperic/pr-bro/releases/download/v0.4.0/pr-bro-v0.4.0-aarch64-apple-darwin.tar.gz"
+    sha256 "884e1712d667053c5eace4e56b30951c2dd19c4b04d9ce799b60eb3130176b19"
   end
 
   def install
